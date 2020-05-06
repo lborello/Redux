@@ -1,2 +1,2 @@
-# redux
- Capaciotacion del patron redux
+# Redux
+ 

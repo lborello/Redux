@@ -7,7 +7,10 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Descripción</th>
+                            <th>Descripción
+                                <i class="fas fa-arrow-down"></i>
+                                <i class="fas fa-arrow-up"></i>
+                            </th>
                             <th>Monto</th>
                             <th>Tipo</th>
                             <th></th>
@@ -15,11 +18,19 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>Descripción</td>
-                            <td>Monto</td>
-                            <td>Tipo</td>
-                            <td>acciones</td>
+                        <tr *ngFor="let item of ingresosEgresos  | ordenIngreso">
+                            <!-- <tr *ngFor="let item of ingresosEgresos | ordenIngreso"> -->
+                            <td> {{ item.descripcion }} </td>
+                            <td> {{ item.monto | currency }} </td>
+                            <td [class.text-success]=" item.tipo === 'ingreso'" [class.text-danger]="  item.tipo === 'egreso'">
+                                {{ item.tipo }}
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" (click)="borrar( item.uid )">
+                      <i class="fa fa-trash"></i>
+                      Borrar
+                    </button>
+                            </td>
                         </tr>
                     </tbody>
 
@@ -30,33 +41,3 @@
         </div>
     </div>
 </div>
-<table class="table table-dark">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
-    </tbody>
-</table>

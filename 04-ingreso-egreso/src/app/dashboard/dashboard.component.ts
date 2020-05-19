@@ -10,6 +10,7 @@ import { filter } from "rxjs/operators";
 import { Store } from "@ngrx/store";
 
 import { AppState } from "../app.reducer";
+// tslint:disable-next-line: import-spacing
 import * as ingresoEgresoActions
   from "../ingreso-egreso/ingreso-egreso.actions";
 import { IngresoEgresoService } from "../services/ingreso-egreso.service";
@@ -25,7 +26,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ingresosSubs: Subscription;
 
   constructor(private store: Store<AppState>,
-    private ingresoEgresoService: IngresoEgresoService) { }
+              private ingresoEgresoService: IngresoEgresoService) { }
 
   ngOnInit() {
     this.userSubs = this.store.select('user')
@@ -35,15 +36,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .subscribe(({ user }) => {
         this.ingresosSubs = this.ingresoEgresoService.initIngresosEgresosListener(user.uid)
           .subscribe(ingresosEgresosFB => {
-            this.store.dispatch(ingresoEgresoActions.setItems({ items: ingresosEgresosFB }))
-          })
+            this.store.dispatch(ingresoEgresoActions.setItems({ items: ingresosEgresosFB }));
+          });
       });
 
   }
 
   ngOnDestroy() {
-    this.ingresosSubs.unsubscribe();
-    this.userSubs.unsubscribe();
+    this.ingresosSubs?.unsubscribe();
+    this.userSubs?.unsubscribe();
   }
 
 }

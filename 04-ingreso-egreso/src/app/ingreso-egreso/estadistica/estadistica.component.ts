@@ -11,7 +11,8 @@ import { IngresoEgreso } from "src/app/models/ingreso-egreso.model";
 
 import { Store } from "@ngrx/store";
 
-import { AppState } from "../../app.reducer";
+
+import { AppStateWithIngreso } from '../ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-estadistica',
@@ -24,12 +25,12 @@ export class EstadisticaComponent implements OnInit {
  public doughnutChartData: MultiDataSet = [ [] ];
 
 
-  const ingresos = 0;
-  const egresos = 0;
-  const totalEgresos = 0;
-  const totalIngresos = 0;
+  ingresos = 0;
+  egresos = 0;
+  totalEgresos = 0;
+  totalIngresos = 0;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppStateWithIngreso>) { }
 
   ngOnInit() {
     this.store.select('ingresosEgresos').subscribe(({ items }) => {
@@ -54,7 +55,7 @@ export class EstadisticaComponent implements OnInit {
         this.egresos ++ ;
         this.totalEgresos =  this.totalEgresos + element.monto ;
        }
-        this.doughnutChartData = [ [ this.totalIngresos , this.totalEgresos ] ];
+      this.doughnutChartData = [ [ this.totalIngresos , this.totalEgresos ] ];
 
     });
   }

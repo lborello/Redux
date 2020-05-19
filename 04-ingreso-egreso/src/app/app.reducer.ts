@@ -7,10 +7,10 @@ import * as ui from "./shared/ui.reducer";
 export interface AppState {
    ui: ui.State;
    user: auth.State;
-   ingresosEgresos: IngresoEgreso.State;
+   // ingresosEgresos: IngresoEgreso.State;
 }
 export const appReducers: ActionReducerMap<AppState> = {
    ui: ui.uiReducer,
    user: auth.authReducer,
-   ingresosEgresos: IngresoEgreso.ingresoEgresoReducer,
+   // ingresosEgresos: IngresoEgreso.ingresoEgresoReducer,
 };
